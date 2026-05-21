@@ -118,7 +118,7 @@ During our model selection tests, we benchmarked multiple models across the Lang
 
 The entire workflow is coordinated using a compiled **LangGraph StateGraph** featuring persistent SQLite checkpointers. If a system failure or rate limit occurs, the pipeline can be paused, inspected, and resumed from the last checkpoint.
 
-graph TD
+```graph TD
     User([User Subject Input]) --> WebUI[Glassmorphic Dashboard]
     WebUI -->|POST /api/start| API[FastAPI Server]
     API -->|Initialize| InitNode[Headless Ollama Setup]
