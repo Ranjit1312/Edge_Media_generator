@@ -1,0 +1,158 @@
+{
+  "theme": "neural_network",
+  "theme_colors": [
+    "#00ffcc",
+    "#ff00cc",
+    "#0a0a1a"
+  ],
+  "particle_density": 60,
+  "animation_speed": 1.0,
+  "slides": [
+    {
+      "duration_ms": 45000,
+      "headline": "THE QUANTUM LEAP: AI'S NEXT FRONTIER",
+      "context": "The current generation of LLMs has revolutionized text, but the next wave requires true multimodal understanding and predictive modeling.",
+      "update": "New research demonstrates quantum-inspired algorithms can process complex, non-linear data sets previously deemed intractable.",
+      "impact": "This signals a shift from predictive text to predictive reality, fundamentally changing industries from drug discovery to climate modeling.",
+      "theme": "neural_network",
+      "theme_colors": [
+        "#00ffcc",
+        "#ff00cc",
+        "#0a0a1a"
+      ],
+      "visual_metaphor": {
+        "type": "network_node",
+        "animation": "pulse"
+      },
+      "scene_layers": [
+        {
+          "type": "constellation",
+          "trigger_at": 0.1,
+          "color": "#00ffcc",
+          "count": 80,
+          "intensity": 0.8,
+          "direction": null
+        },
+        {
+          "type": "data_stream",
+          "trigger_at": 0.0,
+          "color": "#ff00cc",
+          "count": null,
+          "intensity": 0.6,
+          "direction": "vertical"
+        },
+        {
+          "type": "shockwave",
+          "trigger_at": 0.55,
+          "color": "#ff00cc",
+          "count": null,
+          "intensity": 0.9,
+          "direction": null
+        }
+      ],
+      "typography_style": "kinetic_spring",
+      "headline_entrance": "zoom_in",
+      "narrative_card_style": "holographic"
+    },
+    {
+      "duration_ms": 45000,
+      "headline": "THE AI REVOLUTION ISN'T COMING. IT'S HERE.",
+      "context": "The current wave of generative AI tools has moved beyond novelty. They are now integrated into core business workflows, fundamentally changing how knowledge work is performed.",
+      "update": "New models are demonstrating multimodal capabilities, handling text, image, and audio inputs simultaneously with unprecedented coherence.",
+      "impact": "Expect a massive restructuring of white-collar jobs and the creation of entirely new industries focused on AI governance and fine-tuning.",
+      "theme": "neural_network",
+      "theme_colors": [
+        "#00ffcc",
+        "#ff00cc",
+        "#0a0a1a"
+      ],
+      "visual_metaphor": {
+        "type": "network_node",
+        "animation": "pulse"
+      },
+      "scene_layers": [
+        {
+          "type": "constellation",
+          "trigger_at": 0.1,
+          "color": "#00ffcc",
+          "count": 80,
+          "intensity": 0.7,
+          "direction": null
+        },
+        {
+          "type": "data_stream",
+          "trigger_at": 0.0,
+          "color": "#ff00cc",
+          "count": null,
+          "intensity": 0.8,
+          "direction": "vertical"
+        },
+        {
+          "type": "shockwave",
+          "trigger_at": 0.55,
+          "color": "#00ffcc",
+          "count": null,
+          "intensity": 0.9,
+          "direction": null
+        }
+      ],
+      "typography_style": "kinetic_spring",
+      "headline_entrance": "slam_down",
+      "narrative_card_style": "holographic"
+    },
+    {
+      "duration_ms": 45000,
+      "headline": "THE QUANTUM LEAP: AI'S NEXT GENERATION",
+      "context": "The current AI models are powerful, but they are hitting computational and data bottlenecks. The next wave requires a fundamental shift in processing architecture.",
+      "update": "Quantum computing integration is moving from theoretical research to specialized, commercially viable hardware prototypes.",
+      "impact": "This shift promises true AGI capabilities, solving problems currently deemed intractable, from drug discovery to climate modeling.",
+      "theme": "neural_network",
+      "theme_colors": [
+        "#00ffff",
+        "#ff00ff",
+        "#0a0a2a"
+      ],
+      "visual_metaphor": {
+        "type": "network_node",
+        "animation": "pulse"
+      },
+      "scene_layers": [
+        {
+          "type": "constellation",
+          "trigger_at": 0.1,
+          "color": "#00ffff",
+          "count": 80,
+          "intensity": 0.8,
+          "direction": null
+        },
+        {
+          "type": "heat_haze",
+          "trigger_at": 0.2,
+          "color": "#ff00ff",
+          "count": null,
+          "intensity": 0.7,
+          "direction": null
+        },
+        {
+          "type": "data_stream",
+          "trigger_at": 0.5,
+          "color": "#00ffff",
+          "count": null,
+          "intensity": 0.6,
+          "direction": "vertical"
+        },
+        {
+          "type": "shockwave",
+          "trigger_at": 0.6,
+          "color": "#ff00ff",
+          "count": null,
+          "intensity": 0.9,
+          "direction": null
+        }
+      ],
+      "typography_style": "kinetic_spring",
+      "headline_entrance": "zoom_in",
+      "narrative_card_style": "holographic"
+    }
+  ]
+}

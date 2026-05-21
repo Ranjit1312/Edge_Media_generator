@@ -1,0 +1,10 @@
+{
+  "description": "Per-node model overrides for DEV_MODE A/B testing. Only read when DEV_MODE=true. Set any node to any Ollama model tag to experiment.",
+  "node_models": {},
+  "extra_models_to_pull": [
+    "qwen3:4b",
+    "qwen2.5-coder:3b",
+    "llama3.2:3b"
+  ],
+  "dev_mode": false
+}

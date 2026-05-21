@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>On-Device Social Media Animation Studio</title>
+  <!-- Google Fonts Outfit & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <!-- Full-Screen MediaRecorder Locking Overlay -->
+  <div id="recording-overlay" class="hidden">
+    <div class="overlay-card">
+      <div class="spinner"></div>
+      <h2>Exporting Social Media Video (1080x1920)</h2>
+      <p class="warning-text">Encoding in progress. <strong>Please do not switch tabs or minimize this window</strong> to prevent browser thread throttling and frame drops.</p>
+      <div class="progress-container">
+        <div id="recording-progress-bar" class="progress-bar"></div>
+      </div>
+      <p id="recording-status">Captured 0 / 0 frames...</p>
+    </div>
+  </div>
+
+  <div class="dashboard-wrapper">
+    <!-- Glowing Accent Background Blobs -->
+    <div class="glowing-blob blob-1"></div>
+    <div class="glowing-blob blob-2"></div>
+
+    <header class="main-header">
+      <div class="logo">
+        <span class="neon-text">Social Media Generator</span>
+        <span class="sub-logo">Animation Studio</span>
+      </div>
+      
+      <!-- System Health Metrics Bar -->
+      <div class="health-console glass-panel">
+        <div class="metric-widget" id="stat-ollama">
+          <span class="label">Ollama Engine:</span>
+          <span class="status-indicator offline" id="ollama-status-indicator">● Offline</span>
+        </div>
+        <div class="metric-widget">
+          <span class="label">Model:</span>
+          <span class="value" id="stat-model">None</span>
+        </div>
+        <div class="metric-widget">
+          <span class="label">CPU:</span>
+          <span class="value" id="stat-cpu">0%</span>
+        </div>
+        <div class="metric-widget">
+          <span class="label">RAM:</span>
+          <span class="value" id="stat-ram">0 / 0 GB</span>
+        </div>
+        <div class="metric-widget">
+          <span class="label">GPU VRAM:</span>
+          <span class="value" id="stat-gpu">0 GB</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Model Installation Section (Shows progress during first boot download) -->
+    <div id="install-bar-panel" class="glass-panel hidden animate-pulse">
+      <div class="install-header">
+        <span class="pulse-indicator">●</span>
+        <h3 id="install-title">Initializing Standalone Gemma 4 Installation...</h3>
+      </div>
+      <div class="progress-container">
+        <div id="install-progress-bar" class="progress-bar" style="width: 0%"></div>
+      </div>
+      <p id="install-message" class="sub-text">Scanning local hardware and allocating VRAM directories...</p>
+    </div>
+
+    <!-- Main Workspace Grid -->
+    <main class="dashboard-grid">
+      
+      <!-- Left Column: Controls & Dynamic Node Tracking -->
+      <section class="left-column">
+        
+        <!-- Input Panel -->
+        <div class="input-group">
+            <input type="text" id="subject-input" value="Artificial Intelligence" placeholder="e.g. Artificial Intelligence, Quantum Computing...">
+            
+            <div class="input-row">
+              <div class="input-subgroup">
+                <label for="slides-count" class="input-label">Slides:</label>
+                <input type="number" id="slides-count" min="1" max="10" value="1">
+              </div>
+              <div class="input-subgroup">
+                <label for="voice-persona-select" class="input-label">Spoken Voice (Kokoro-82M):</label>
+                <select id="voice-persona-select" class="dev-select">
+                  <option value="af_bella" selected>Bella (US Expressive Female)</option>
+                  <option value="af_nicole">Nicole (US Professional Female)</option>
+                  <option value="af_sarah">Sarah (US Soft Female)</option>
+                  <option value="am_adam">Adam (US Deep Male)</option>
+                  <option value="am_michael">Michael (US Engaging Male)</option>
+                  <option value="bf_emma">Emma (UK Clear Female)</option>
+                  <option value="bf_isabella">Isabella (UK Formal Female)</option>
+                  <option value="bm_george">George (UK Rich Male)</option>
+                  <option value="bm_lewis">Lewis (UK Bright Male)</option>
+                </select>
+              </div>
+            </div>
+            
+            <button id="btn-generate" class="neon-btn disabled" disabled style="margin-top: 15px; width: 100%;">Generate Production Video</button>
+          </div>
+
+        <!-- Developer Configuration Panel -->
+        <div class="control-panel glass-panel" id="developer-panel">
+          <div class="panel-header-row">
+            <h2>Developer Configuration <span id="dev-status-badge" class="dev-badge inactive">Inactive</span></h2>
+            <label class="switch">
+              <input type="checkbox" id="dev-mode-toggle">
+              <span class="slider round"></span>
+            </label>
+          </div>
+          <p class="panel-desc">A/B test dynamic model mappings per agent node instead of using the production 2-model split.</p>
+          
+          <div id="dev-options" class="dev-options-grid hidden">
+            <div class="dev-select-group">
+              <label for="select-researcher">Researcher Fallback Model:</label>
+              <select id="select-researcher" class="dev-select"></select>
+              <input type="text" id="input-custom-researcher" class="dev-custom-input hidden" placeholder="Enter custom Ollama tag (e.g. qwen:0.5b)...">
+            </div>
+            <div class="dev-select-group">
+              <label for="select-editor">Editor / Auditor Model:</label>
+              <select id="select-editor" class="dev-select"></select>
+              <input type="text" id="input-custom-editor" class="dev-custom-input hidden" placeholder="Enter custom Ollama tag (e.g. qwen:0.5b)...">
+            </div>
+            <div class="dev-select-group">
+              <label for="select-scriptwriter">Scriptwriter Model:</label>
+              <select id="select-scriptwriter" class="dev-select"></select>
+              <input type="text" id="input-custom-scriptwriter" class="dev-custom-input hidden" placeholder="Enter custom Ollama tag (e.g. qwen:0.5b)...">
+            </div>
+            <div class="dev-select-group">
+              <label for="select-director">Visual Director Model:</label>
+              <select id="select-director" class="dev-select"></select>
+              <input type="text" id="input-custom-director" class="dev-custom-input hidden" placeholder="Enter custom Ollama tag (e.g. qwen:0.5b)...">
+            </div>
+            <div class="dev-select-group">
+              <label for="input-custom-pull">Pull Custom Ollama Model:</label>
+              <div class="pull-input-row">
+                <input type="text" id="input-custom-pull" class="dev-custom-input" placeholder="Enter tag (e.g. gemma:2b)..." style="margin-top: 0; flex-grow: 1;">
+                <button id="btn-pull-custom" class="neon-btn secondary small-btn">Pull Model</button>
+              </div>
+            </div>
+            <button id="btn-save-dev" class="neon-btn secondary">Apply Model Mappings</button>
+          </div>
+
+          <!-- Pipeline Run Telemetry Section -->
+          <div class="telemetry-section">
+            <div class="telemetry-divider"></div>
+            <h3>Pipeline Run Telemetry</h3>
+            <p class="telemetry-desc">Download detailed computation reports, latency traces, and model justifications for A/B testing.</p>
+            <div class="telemetry-actions">
+              <a href="/api/telemetry/download?format=markdown" class="telemetry-btn markdown-btn" download>
+                <span class="icon">📊</span> Download Report (.md)
+              </a>
+              <a href="/api/telemetry/download?format=json" class="telemetry-btn json-btn" download>
+                <span class="icon">⚙️</span> Download Data (.json)
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Run History & A/B Comparisons -->
+        <div class="control-panel glass-panel" id="history-panel">
+          <h2>Run History & A/B Comparisons</h2>
+          <p class="panel-desc">Access cached news and video configurations from previous runs. Compare performance across model selections or rerun configurations directly.</p>
+          <div class="history-list" id="history-runs-container">
+            <div class="history-placeholder">No past runs found. Runs will appear here once generated.</div>
+          </div>
+        </div>
+
+        <!-- Compressed 4-Node LangGraph Visualizer -->
+        <div class="graph-panel glass-panel">
+          <h2>Multi-Agent Graph Progress</h2>
+          <div class="nodes-container">
+            <div class="node-item" id="node-researcher">
+              <div class="node-circle">1</div>
+              <span class="node-label">Researcher</span>
+              <span class="node-status">Idle</span>
+            </div>
+            <div class="arrow">➔</div>
+            <div class="node-item" id="node-editor">
+              <div class="node-circle">2</div>
+              <span class="node-label">Editor / Auditor</span>
+              <span class="node-status">Idle</span>
+            </div>
+            <div class="arrow">➔</div>
+            <div class="node-item" id="node-scriptwriter">
+              <div class="node-circle">3</div>
+              <span class="node-label">Scriptwriter</span>
+              <span class="node-status">Idle</span>
+            </div>
+            <div class="arrow">➔</div>
+            <div class="node-item" id="node-director">
+              <div class="node-circle">4</div>
+              <span class="node-label">Visual Director</span>
+              <span class="node-status">Idle</span>
+            </div>
+            <div class="arrow">➔</div>
+            <div class="node-item" id="node-voice-synthesis">
+              <div class="node-circle">5</div>
+              <span class="node-label">Speech Synthesis</span>
+              <span class="node-status">Idle</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Retro Agent Console Output -->
+        <div class="terminal-panel glass-panel">
+          <div class="terminal-header">
+            <span class="dots"><span></span><span></span><span></span></span>
+            <span class="title">Agentic Console Log</span>
+            <button id="btn-reset-lock" class="terminal-action-btn">Reset Lock</button>
+          </div>
+          <div class="terminal-content" id="log-console">
+            <div class="log-line system">[SYSTEM] Awaiting input subject strategy. Click Generate to launch...</div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Right Column: Premium 9:16 Portrait Canvas Visualizer -->
+      <section class="right-column glass-panel">
+        <div class="studio-header">
+          <h2>Portrait Studio (9:16 Arena)</h2>
+          <span class="resolution">Logical 1080 x 1920</span>
+        </div>
+
+        <!-- Portrait Viewport Wrapper -->
+        <div class="canvas-viewport-container">
+          <div class="canvas-aspect-wrapper">
+            <!-- Canvas Object -->
+            <canvas id="studio-canvas" width="1080" height="1920"></canvas>
+            
+            <!-- Typrographic Cards Overlay Layer -->
+            <div id="typographic-overlay" class="hidden">
+              <div class="slide-card glass-panel-heavy">
+                <div class="card-glow"></div>
+                <h1 id="slide-headline">HEADLINE HOOK</h1>
+                <div class="card-body">
+                  <div class="segment">
+                    <span class="badge badge-context">BACKGROUND</span>
+                    <p id="slide-context">Loading historical context details...</p>
+                  </div>
+                  <div class="segment">
+                    <span class="badge badge-update">CURRENT UPDATE</span>
+                    <p id="slide-update">Loading present updates...</p>
+                  </div>
+                  <div class="segment">
+                    <span class="badge badge-impact">POTENTIAL IMPACT</span>
+                    <p id="slide-impact">Loading future industry forecasts...</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div id="canvas-placeholder">
+              <div class="placeholder-text">
+                <div class="icon">🎬</div>
+                <p>Generated portraits will render here.</p>
+                <span class="sub">Awaiting LangGraph configuration data...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Studio Playback Controls -->
+        <div class="playback-controls">
+          <button id="btn-prev" class="icon-btn disabled" disabled>◀</button>
+          <button id="btn-play-pause" class="icon-btn disabled" disabled>⏸</button>
+          <button id="btn-next" class="icon-btn disabled" disabled>▶</button>
+          
+          <div class="progress-tracker">
+            <span id="current-slide-num">0 / 0</span>
+            <div class="track-bar">
+              <div id="slide-progress" class="fill"></div>
+            </div>
+          </div>
+          
+          <div class="speed-adjuster">
+            <label for="speed-slider">Speed</label>
+            <input type="range" id="speed-slider" min="0.5" max="2.0" step="0.1" value="1.0" class="disabled" disabled>
+          </div>
+        </div>
+
+        <!-- Export Buttons -->
+                <!-- Export Buttons & Rerun Controls -->
+        <div class="export-actions flex-row">
+          <button id="btn-export-video" class="neon-btn primary disabled" disabled style="flex-grow: 2;">Export High-Quality Video (1080x1920)</button>
+          
+          <div class="rerun-widget glass-panel-heavy">
+            <label for="rerun-model-select">Rerun Visuals Model:</label>
+            <div class="rerun-row">
+              <select id="rerun-model-select">
+                <option value="gemma4:e4b" selected>Gemma 4 4B</option>
+                <option value="gemma2:2b">Gemma 2 2B</option>
+                <option value="qwen2.5:1.5b">Qwen 2.5 1.5B</option>
+                <option value="qwen2.5:3b">Qwen 2.5 3B</option>
+                <option value="qwen2.5:7b">Qwen 2.5 7B</option>
+              </select>
+              <button id="btn-regenerate-visuals" class="neon-btn secondary small-btn">Regenerate Visual Layout</button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </main>
+  </div>
+
+  <!-- HTML5 Video Preview Modal -->
+  <div id="video-preview-modal" class="hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container glass-panel-heavy">
+      <div class="modal-header">
+        <h3 id="modal-title">Run Video Preview</h3>
+        <button id="btn-close-modal" class="close-btn">&times;</button>
+      </div>
+      <div class="modal-body">
+        <video id="modal-video-player" controls autoplay></video>
+      </div>
+    </div>
+  </div>
+    <!-- Glassmorphic Screenplay Breakpoint Modal -->
+  <div id="script-editor-modal" class="hidden">
+    <div class="modal-backdrop"></div>
+    <div class="modal-container glass-panel-heavy large-modal">
+      <div class="modal-header">
+        <span class="pulse-indicator" style="color: var(--color-secondary); text-shadow: var(--shadow-neon-pink);">●</span>
+        <h3>LangGraph Human-in-the-Loop Breakpoint: Script Editor</h3>
+        <span class="modal-subtitle">Review, edit, and enrich the drafted screenplay slides before continuing to Visual Layout & Speech Synthesis.</span>
+      </div>
+      <div class="modal-body" id="script-editor-container">
+        <!-- Textareas will be injected dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button id="btn-cancel-edit" class="neon-btn secondary small-btn">Cancel Run</button>
+        <button id="btn-resume-pipeline" class="neon-btn primary">Resume & Synthesize Multi-Modal Video</button>
+      </div>
+    </div>
+  </div>
+  <!-- Core Scripts -->
+  <script src="/static/engine.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

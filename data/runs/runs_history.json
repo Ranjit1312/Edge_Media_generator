@@ -1,0 +1,114 @@
+[
+  {
+    "run_id": "run_1779406435",
+    "subject": "Artificial Intelligence",
+    "timestamp": "2026-05-22 05:03:57",
+    "models": {
+      "researcher_fallback": "gemma2:2b",
+      "editor": "gemma2:2b",
+      "scriptwriter": "gemma4:e4b",
+      "director": "gemma4:e4b"
+    },
+    "verified_news": [
+      {
+        "title": "Georgia State Launches Master of Science in Artificial Intelligence and Business Transformation",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/georgia-state-launches-master-science-120000263.html",
+        "source": "Yahoo Finance",
+        "date": "2026-05-21T13:10:00+00:00",
+        "summary": "Georgia State University has launched a new Master of Science in Artificial Intelligence and Business Transformation program, designed to prepare professionals for leading AI-enabled transformation across business functions. The program combines applied artificial intelligence capabilities with business acumen to equip graduates to navigate the rapidly evolving landscape of AI technology."
+      }
+    ],
+    "has_video": false
+  },
+  {
+    "run_id": "run_1779406029",
+    "subject": "Artificial Intelligence",
+    "timestamp": "2026-05-22 04:57:11",
+    "models": {
+      "researcher_fallback": "gemma2:2b",
+      "editor": "gemma2:2b",
+      "scriptwriter": "gemma4:e4b",
+      "director": "gemma4:e4b"
+    },
+    "verified_news": [
+      {
+        "title": "Georgia State Launches Master of Science in Artificial Intelligence and Business Transformation",
+        "url": "https://finance.yahoo.com/sectors/technology/articles/georgia-state-launches-master-science-120000263.html",
+        "source": "Yahoo Finance",
+        "date": "2026-05-21T13:10:00+00:00",
+        "summary": "Georgia State University has launched a new Master of Science in Artificial Intelligence and Business Transformation program, designed to prepare professionals for leading AI-enabled transformation across business functions. The program combines applied artificial intelligence capabilities with business acumen to equip graduates to navigate the rapidly evolving landscape of AI technology."
+      }
+    ],
+    "has_video": false
+  },
+  {
+    "run_id": "run_1779395343",
+    "subject": "Artificial Intelligence (Reused News Test)",
+    "timestamp": "2026-05-22 01:59:05",
+    "models": {
+      "researcher_fallback": "gemma2:2b",
+      "editor": "gemma2:2b",
+      "scriptwriter": "gemma4:e4b",
+      "director": "gemma4:e4b"
+    },
+    "verified_news": [
+      {
+        "title": "Alan Turing's Echo: The Quest for Intelligence in Machines",
+        "url": "https://inspiring-concepts.org/concept-1",
+        "source": "Inspirational Concept",
+        "date": "Factual Wisdom",
+        "summary": "Philosopher Alan Turing's groundbreaking work on machine intelligence continues to inspire the pursuit of artificial intelligence, prompting us to consider not just what machines can do but also their potential for growth and evolution. His legacy serves as a reminder that the quest for artificial intelligence is an ongoing dialogue between humanity and technology."
+      },
+      {
+        "title": "The Algorithm's Symphony: A Dance of Data and Creativity",
+        "url": "https://inspiring-concepts.org/concept-0",
+        "source": "Inspirational Concept",
+        "date": "Factual Wisdom",
+        "summary": "AI is not just about processing data; it's about creating something new.  The "
+      },
+      {
+        "title": "The Human-Machine Symbiosis: A Partnership for Progress",
+        "url": "https://inspiring-concepts.org/concept-3",
+        "source": "Inspirational Concept",
+        "date": "Factual Wisdom",
+        "summary": "AI is not a replacement for human ingenuity, but rather a powerful tool to augment our capabilities.  The potential for AI to solve complex global challenges and improve everyday life is immense, as it can assist in healthcare, climate change mitigation, and resource management."
+      }
+    ],
+    "has_video": false
+  },
+  {
+    "run_id": "run_1779394942",
+    "subject": "Artificial Intelligence",
+    "timestamp": "2026-05-22 01:52:24",
+    "models": {
+      "researcher_fallback": "gemma2:2b",
+      "editor": "gemma2:2b",
+      "scriptwriter": "gemma4:e4b",
+      "director": "gemma4:e4b"
+    },
+    "verified_news": [
+      {
+        "title": "Alan Turing's Echo: The Quest for Intelligence in Machines",
+        "url": "https://inspiring-concepts.org/concept-1",
+        "source": "Inspirational Concept",
+        "date": "Factual Wisdom",
+        "summary": "Philosopher Alan Turing's groundbreaking work on machine intelligence continues to inspire the pursuit of artificial intelligence, prompting us to consider not just what machines can do but also their potential for growth and evolution. His legacy serves as a reminder that the quest for artificial intelligence is an ongoing dialogue between humanity and technology."
+      },
+      {
+        "title": "The Algorithm's Symphony: A Dance of Data and Creativity",
+        "url": "https://inspiring-concepts.org/concept-0",
+        "source": "Inspirational Concept",
+        "date": "Factual Wisdom",
+        "summary": "AI is not just about processing data; it's about creating something new.  The "
+      },
+      {
+        "title": "The Human-Machine Symbiosis: A Partnership for Progress",
+        "url": "https://inspiring-concepts.org/concept-3",
+        "source": "Inspirational Concept",
+        "date": "Factual Wisdom",
+        "summary": "AI is not a replacement for human ingenuity, but rather a powerful tool to augment our capabilities.  The potential for AI to solve complex global challenges and improve everyday life is immense, as it can assist in healthcare, climate change mitigation, and resource management."
+      }
+    ],
+    "has_video": true
+  }
+]

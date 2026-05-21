@@ -1,0 +1,60 @@
+{
+  "theme": "neural_network",
+  "theme_colors": [
+    "#00ffff",
+    "#ff00ff",
+    "#0a0a1a"
+  ],
+  "particle_density": 60,
+  "animation_speed": 1.0,
+  "slides": [
+    {
+      "duration_ms": 45000,
+      "headline": "The Quantum Leap in Compute Power",
+      "context": "Traditional silicon limits are reaching their breaking point, necessitating a radical shift in processing architecture.",
+      "update": "Quantum computing breakthroughs promise exponential speed increases, moving beyond binary limitations.",
+      "impact": "This heralds an era of solving previously intractable problems in medicine, materials science, and AI.",
+      "narration_transcript": "The next frontier of computing isn't faster silicon; it's fundamentally different physics. Quantum computing promises to unlock computational power previously confined to theory.",
+      "theme": "neural_network",
+      "theme_colors": [
+        "#00ffff",
+        "#ff00ff",
+        "#0a0a1a"
+      ],
+      "visual_metaphor": {
+        "type": "network_node",
+        "animation": "pulse"
+      },
+      "scene_layers": [
+        {
+          "type": "constellation",
+          "trigger_at": 0.1,
+          "color": "#00ffff",
+          "count": 80,
+          "intensity": 0.8,
+          "direction": null
+        },
+        {
+          "type": "heat_haze",
+          "trigger_at": 0.2,
+          "color": "#ff00ff",
+          "count": null,
+          "intensity": 0.7,
+          "direction": null
+        },
+        {
+          "type": "shockwave",
+          "trigger_at": 0.55,
+          "color": "#00ffff",
+          "count": null,
+          "intensity": 0.9,
+          "direction": null
+        }
+      ],
+      "typography_style": "kinetic_spring",
+      "headline_entrance": "zoom_in",
+      "narrative_card_style": "holographic",
+      "audio_url": "/static/runs/run_1779406029/audio_0.mp3"
+    }
+  ]
+}
